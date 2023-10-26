@@ -14,10 +14,10 @@ export default function Body({ sidebar, children, heading }: BodyProps) {
     <Container>
       {heading && <Heading/>}
       <Stack direction='horizontal'>
-        { sidebar && <Sidebar />}
-        <div className= 'child-container'>
-          { children }
-        </div>
+      { sidebar && <Sidebar />}
+      <div className= 'child-container'>
+        { children }
+      </div>
       </Stack>
     </Container>
   )

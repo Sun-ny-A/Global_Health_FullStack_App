@@ -22,10 +22,13 @@ function MyApp() {
         borderRadius: 1,
         p: 100,
         position: 'fixed',
+        
       }}
     >
       {theme.palette.mode} mode
-      <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+      <IconButton sx={{
+         ml: 1,
+         }} onClick={colorMode.toggleColorMode} color="inherit">
         {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
       </IconButton>
     </Box>
@@ -37,7 +40,7 @@ interface ToggleColorModeProps {
 }
 
 export default function ToggleColorMode({ children }: ToggleColorModeProps) {
-  const [mode, setMode] = React.useState<'light' | 'dark'>('light');
+  const [mode, setMode] = React.useState<'light' | 'dark'>('dark');
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {

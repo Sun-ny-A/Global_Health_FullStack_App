@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from 'react-router-dom';
 import video from "../assets/1089742305-preview.mp4";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
@@ -63,7 +64,7 @@ export default function Home() {
                         Doctor
                     </MenuItem>
                     <MenuItem className="menu-item" onClick={() => handleMenuItemClick("Volunteer")}>
-                        Volunteer
+                        <NavLink to="/register" className="nav-link">Volunteer</NavLink>
                     </MenuItem>
                 </Menu>
             </div>

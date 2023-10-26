@@ -21,19 +21,16 @@ interface HeadingProps {
 const pages = ['Projects', 'Research', 'Donations'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function Heading({ variant = 'default'}: HeadingProps) {
+function Heading({ variant = 'default' }: HeadingProps) {
   if (variant === 'custom') {
     return (
-      <AppBar position="static">
-        <Container className="custom-container">
-          <img className="logo" height="60px" width="60px" src={logo}></img>
-          <AdbIcon />
-          <div custom-heading-explore>
-          <p className="explore"> New to the site? <a href="/explore">Explore here.</a> </p>
-          </div>
-        </Container>
-      </AppBar>
-    )
+      <Container className="custom-container">
+        <img className="logo" height="60px" width="60px" src={logo} alt="Custom Logo" />
+        <div custom-heading-explore>
+          <p className="explore">New to the site? <a href="/explore">Explore here.</a></p>
+        </div>
+      </Container>
+    );
   }
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -74,7 +71,7 @@ function Heading({ variant = 'default'}: HeadingProps) {
               textDecoration: 'none',
             }}
           >
-            <img height="60px" width="60px" src={logo}></img>
+            <img height="60px" width="60px" src={logo} alt="Default Logo" />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -178,4 +175,5 @@ function Heading({ variant = 'default'}: HeadingProps) {
     </AppBar>
   );
 }
+
 export default Heading;

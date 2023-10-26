@@ -1,11 +1,21 @@
 import Body from "../components/Body";
-import Register from "../components/forms/Register";
+import Heading from "../components/Heading";
+import video from "../assets/1089742305-preview.mp4";
 
-export default function FormPage() {
+export default function FormPage(props: { children: JSX.Element }) {
 
   return (
     <Body sidebar={false}>
-        <Register />
+      <div className="home-video-container">
+        <div className="overlay"></div>
+        <video src={video} autoPlay loop muted />
+      </div>
+      <div className="home-custom-heading">
+        <Heading variant="custom" />
+      </div>
+      <div className="form-container">
+        {props.children}
+      </div>
     </Body>
   )
 }
