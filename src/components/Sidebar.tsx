@@ -13,7 +13,7 @@ import MailIcon from '@mui/icons-material/Mail';
 
 type Anchor = 'left';
 
-const drawerWidth = 200; 
+const drawerWidth = 300; 
 
 export default function LeftDrawer() {
   const [isHovered, setIsHovered] = React.useState(false);
@@ -38,7 +38,7 @@ export default function LeftDrawer() {
       role="presentation"
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {['Inbox', 'Send Email', 'Calendar', 'Urgent'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>

@@ -6,6 +6,7 @@ import ToggleColorMode from "./theme/theme";
 import Signin from "./components/forms/SigninForm";
 import HomePage from "./pages/HomePage";
 import FormPage from "./pages/FormPage";
+import UserPage from "./pages/UserPage";
 import RegisterForm from './components/forms/RegisterForm';
 
 
@@ -14,12 +15,13 @@ function App(): JSX.Element {
 
   return (
     /*<ToggleColorMode>*/
-      <Container>
+      <Container className="page-container">
         <BrowserRouter>
           <Routes>
             <Route path='/home' element={<HomePage />} />
             <Route path='/signin' element={<FormPage><Signin /></FormPage>} />
             <Route path='/register' element={<FormPage><RegisterForm /></FormPage>}/>
+            <Route path='/landing' element={<UserPage />} />
             <Route path='*' element={<Navigate to='/home' />} />
           </Routes>
         </BrowserRouter>

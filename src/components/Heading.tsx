@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { NavLink } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -16,6 +17,10 @@ import logo from '../assets/3IsN.gif';
 
 interface HeadingProps {
   variant?: 'default' | 'custom'
+}
+
+const appBarStyle = {
+  backgroundColor: 'black',
 }
 
 const pages = ['Projects', 'Research', 'Donations'];
@@ -52,10 +57,9 @@ function Heading({ variant = 'default' }: HeadingProps) {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ width: '100%', ...appBarStyle }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -144,7 +148,7 @@ function Heading({ variant = 'default' }: HeadingProps) {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <Avatar src="/broken-image.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -163,11 +167,23 @@ function Heading({ variant = 'default' }: HeadingProps) {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              {settings.map((setting) => {
+                if (setting === 'Logout') {
+                  return (
+                    <NavLink to="/home" key={setting} className="nav-link">
+                      <MenuItem onClick={handleCloseUserMenu}>
+                        <Typography textAlign="center">{setting}</Typography>
+                      </MenuItem>
+                    </NavLink>
+                  )
+                } else {
+                  return (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center">{setting}</Typography>
+                    </MenuItem>
+                  )
+                }
+              })}
             </Menu>
           </Box>
         </Toolbar>

@@ -27,11 +27,11 @@ export default function LoginForm() {
     }
     clearForm()
     loginUser(loginInfo)
-    navigate('/')
-  }
+  }  
 
+  //https://healthspeak.onrender.com/login
   async function loginUser(loginInfo: Partial<User>){
-    const res = await fetch('https://healthspeak.onrender.com/login',{
+    const res = await fetch('http://127.0.0.1:5000/login',{
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(loginInfo)
@@ -40,6 +40,7 @@ export default function LoginForm() {
       const data = await res.json()
       const accessToken = data.access_token
       localStorage.setItem('token', accessToken)
+      navigate('/landing')
     } else window.alert('Failed Login')
   }
 
@@ -57,7 +58,7 @@ export default function LoginForm() {
       <input className="input-field" type="text" name='email' ref={emailField}/><br/>
       <label htmlFor="password">Password</label><br/>
       <input className="input-field" type="password" name='password' ref={passwordField} required/><br/>
-      <input className="Register-Button" type="submit" value='Register' />
+      <input className="Register-Button" type="submit" value='Sign In' />
     </form>
   )
 }

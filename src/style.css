@@ -2,6 +2,11 @@
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.page-container {
+    height: 900px;
 }
 
 .home-video-container {
@@ -45,11 +50,10 @@ video {
 }
 
 .home-content {
-    width: 60%;
+    width: 65%;
     height: 17%;
     position: absolute;
     margin-top: 31%;
-    margin-left: 80px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -107,7 +111,7 @@ video {
 
 .Form {
     width: 500px;
-    margin-top: 130px;
+    margin-top: 200px;
     margin-left: 400px;
     display: flex;
     flex-direction: column;
@@ -146,5 +150,75 @@ video {
     border: 3px solid #ccc; 
     border-radius: 5px; 
     margin-left: 25px;
+}
+
+.car-text {
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-weight: bold;
+    margin-bottom: 55px;
+    font-size: 50px;
+}
+
+.carousel {
+    width: 600px;
+    height: 300px;
+    margin-top: 5px;
+    margin-left: 125px;
+}
+
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 900px;
+}
+
+/* .map-container {
+    display: flex;
+    justify-content: center;
+    &__map {
+        height: 60vh;
+        width: 80%;
+    }
+} */
+
+.checklist-div {
+    margin-bottom: 1000px;
+}
+
+.calendar {
+    width: 500px;
+    margin-bottom: 1000px;
+}
+
+.checklist {
+    background-color: black;
+    font-size: 20px;
+    width: 300px;
+    margin-top: -600px;
+}
+
+.checklist-heading {
+    text-align: center;
+
+}
+
+.page-heading {
+    width: 100px;
+    text-align: left;
+    font-size: 50px;
+    font-weight: bold;
+    color: lightblue;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.landing-container {
+    width: 1000px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    margin-left: -100px;
 
 }

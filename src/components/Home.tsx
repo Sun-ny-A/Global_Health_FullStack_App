@@ -52,7 +52,7 @@ export default function Home() {
                         Doctor
                     </MenuItem>
                     <MenuItem className="menu-item" onClick={() => handleMenuItemClick("Volunteer")}>
-                        Volunteer
+                        <NavLink to="/signin" className="nav-link">Volunteer</NavLink>
                     </MenuItem>
                 </Menu>
                 <Menu

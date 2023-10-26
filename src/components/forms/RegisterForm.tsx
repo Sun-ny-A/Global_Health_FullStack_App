@@ -42,7 +42,7 @@ export default function RegisterForm() {
     console.log(data)
     if(!res.ok){ 
       window.alert('Register Failed')
-    } else navigate('/home')
+    } else navigate('/landing')
   }
   
   function clearFormData(){
@@ -63,7 +63,7 @@ export default function RegisterForm() {
       <input className="input-field" type="password" name='password' ref={passwordField} required/><br/>
       <label htmlFor="first-name">First Name</label><br/>
       <input className="input-field" type="text" name='first-name' ref={fNameField}/><br/>
-      <label htmlFor="last-name">LastName</label><br/>
+      <label htmlFor="last-name">Last Name</label><br/>
       <input className="input-field" type="text" name='last-name' ref={lNameField}/><br/>
       <input className="Register-Button" type="submit" value='Register' />
     </form>
