@@ -1,9 +1,9 @@
-import { useRef, FormEvent } from 'react'
+import { useRef, FormEvent, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { User } from '../../types'
 
-export default function RegisterForm() {
+export default function UserForm({ edit }: { edit: boolean }) {
 
   const navigate = useNavigate()
 
@@ -12,6 +12,12 @@ export default function RegisterForm() {
   const emailField = useRef<HTMLInputElement>(null)
   const fNameField = useRef<HTMLInputElement>(null)
   const lNameField = useRef<HTMLInputElement>(null)
+
+  useEffect(()=>{
+    if( !edit && localStorage.getItem('token') ){
+      navigate('/landing')
+    }
+  },[])
 
 
   async function handleRegisterData(e: FormEvent<HTMLElement>){
@@ -29,20 +35,23 @@ export default function RegisterForm() {
       user.last_name = lNameField.current?.value
     }
     clearFormData()
-    await registerUser(user)
+    await registerUser( user  )
   }
 
   async function registerUser(user: User){
-    const res = await fetch('http://127.0.0.1:5000/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const endpoint = edit ? 'user' : 'register'
+    const res = await fetch(`http://127.0.0.1:5000/${endpoint}`, {
+      method: edit ? 'PUT' : 'POST',
+      headers: { 'Content-Type': 'application/json',
+                  Authorization: `Bearer ${localStorage.getItem('token')!}`
+                },
       body: JSON.stringify(user)
     })
     const data = await res.json()
     console.log(data)
     if(!res.ok){ 
       window.alert('Register Failed')
-    } else navigate('/landing')
+    } else navigate('/')
   }
   
   function clearFormData(){
@@ -65,7 +74,7 @@ export default function RegisterForm() {
       <input className="input-field" type="text" name='first-name' ref={fNameField}/><br/>
       <label htmlFor="last-name">Last Name</label><br/>
       <input className="input-field" type="text" name='last-name' ref={lNameField}/><br/>
-      <input className="Register-Button" type="submit" value='Register' />
+      <input className="Register-Button" type="submit" value={ edit ? 'Edit' : 'Register' }/>
     </form>
   );
 }

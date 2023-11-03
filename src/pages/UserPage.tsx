@@ -1,26 +1,40 @@
+import { useContext } from 'react';
+import { UserContext } from '../contexts/UserProvider';
 import Heading from "../components/Heading";
 import Body from "../components/Body";
-import CheckboxList from "../components/CheckboxList";
-import Carousels from "../components/Carousels";
-import DateCalendarServerRequest from "../components/Calender";
-import Stack from 'react-bootstrap/esm/Stack'
+import Affirmation from '../components/affirm';
+import image from "../assets/welcome-background.jpg";
+import TaskList from '../components/goals';
+
+// import CheckboxList from "../components/CheckboxList";
+// import Combining from "../components/graphs";
+
 
 
 export default function UserPage() {
 
-    console.log(localStorage.getItem('token'), 'from landing page')
+  const { user } = useContext(UserContext)
+
+  console.log(localStorage.getItem('token'), 'from landing page')
+  
 
   return (
-    <div className="userpage-div">
-    <Heading variant="default" />
-        <Body sidebar={true}>
-            <Carousels />
-            <h2>Welcome, user!</h2>
-            <Stack direction='horizontal'>
-            <CheckboxList />
-            <DateCalendarServerRequest />
-            </Stack>
-        </Body>
+    <div className="pages-div">
+      <Heading variant="default" />
+      <div>
+        <img src={image} className="img-welcome"/>
+        <h2 className="welcome-user">Welcome back {user.username}!</h2>
+      </div>
+      <Body sidebar={true}>
+        <Affirmation />
+        <TaskList />
+      </Body>
     </div>
-  )
+  );
 }
+
+
+
+
+
+

@@ -13,7 +13,7 @@ import MailIcon from '@mui/icons-material/Mail';
 
 type Anchor = 'left';
 
-const drawerWidth = 300; 
+const drawerWidth = 250; 
 
 export default function LeftDrawer() {
   const [isHovered, setIsHovered] = React.useState(false);
@@ -31,7 +31,7 @@ export default function LeftDrawer() {
       sx={{
         width: drawerWidth,
         visibility: isHovered ? 'visible' : 'hidden', 
-        transition: 'visibility 0.7s'
+        transition: 'visibility 0.3s'
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

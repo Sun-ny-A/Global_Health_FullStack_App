@@ -6,13 +6,11 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import logo from '../assets/3IsN.gif';
 
 interface HeadingProps {
@@ -20,11 +18,14 @@ interface HeadingProps {
 }
 
 const appBarStyle = {
-  backgroundColor: 'black',
+  backgroundColor: 'rgba(0, 0, 0, 0.9)',
+  borderTop: '10px solid rgba(101, 94, 94, 0.8)',
+  borderBottom: '10px solid rgba(101, 94, 94, 0.8)',
+  boxShadow: '0 10px 10px rgba(101, 94, 94, 0.8) inset, 0 -10px 10px rgba(101, 94, 94, 0.8) inset',
 }
 
-const pages = ['Projects', 'Research', 'Donations'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ['Making Health and Wellness Accessible Worldwide'];
+const settings = ['Find A Provider', 'Chat', 'Profile', 'Edit Profile', 'Delete Profile', 'Logout'];
 
 function Heading({ variant = 'default' }: HeadingProps) {
   if (variant === 'custom') {
@@ -32,7 +33,7 @@ function Heading({ variant = 'default' }: HeadingProps) {
       <Container className="custom-container">
         <img className="logo" height="60px" width="60px" src={logo} alt="Custom Logo" />
         <div custom-heading-explore>
-          <p className="explore">New to the site? <a href="/explore">Explore here.</a></p>
+          <p className="explore">MAKING HEALTH AND WELLNESS ACCESSIBLE WORLDWIDE <a href="/explore">home</a></p>
         </div>
       </Container>
     );
@@ -40,10 +41,7 @@ function Heading({ variant = 'default' }: HeadingProps) {
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
+  
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -64,7 +62,7 @@ function Heading({ variant = 'default' }: HeadingProps) {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -78,61 +76,6 @@ function Heading({ variant = 'default' }: HeadingProps) {
             <img height="60px" width="60px" src={logo} alt="Default Logo" />
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -148,7 +91,7 @@ function Heading({ variant = 'default' }: HeadingProps) {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar src="/broken-image.jpg" />
+                <Avatar src="/broken-image.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -170,7 +113,52 @@ function Heading({ variant = 'default' }: HeadingProps) {
               {settings.map((setting) => {
                 if (setting === 'Logout') {
                   return (
-                    <NavLink to="/home" key={setting} className="nav-link">
+                    <NavLink to="/logout" key={setting} className="nav-link">
+                      <MenuItem onClick={handleCloseUserMenu}>
+                        <Typography textAlign="center">{setting}</Typography>
+                      </MenuItem>
+                    </NavLink>
+                  )
+                }
+                if (setting === 'Edit Profile') {
+                  return (
+                    <NavLink to="/edit" key={setting} className="nav-link">
+                      <MenuItem onClick={handleCloseUserMenu}>
+                        <Typography textAlign="center">{setting}</Typography>
+                      </MenuItem>
+                    </NavLink>
+                  )
+                }
+                if (setting === 'Chat') {
+                  return (
+                    <NavLink to="/chat" key={setting} className="nav-link">
+                      <MenuItem onClick={handleCloseUserMenu}>
+                        <Typography textAlign="center">{setting}</Typography>
+                      </MenuItem>
+                    </NavLink>
+                  )
+                }
+                if (setting === 'Find A Provider') {
+                  return (
+                    <NavLink to="/provider" key={setting} className="nav-link">
+                      <MenuItem onClick={handleCloseUserMenu}>
+                        <Typography textAlign="center">{setting}</Typography>
+                      </MenuItem>
+                    </NavLink>
+                  )
+                }
+                if (setting === 'Profile') {
+                  return (
+                    <NavLink to="/landing" key={setting} className="nav-link">
+                      <MenuItem onClick={handleCloseUserMenu}>
+                        <Typography textAlign="center">{setting}</Typography>
+                      </MenuItem>
+                    </NavLink>
+                  )
+                }
+                if (setting === 'Delete Profile') {
+                  return (
+                    <NavLink to="/delete" key={setting} className="nav-link">
                       <MenuItem onClick={handleCloseUserMenu}>
                         <Typography textAlign="center">{setting}</Typography>
                       </MenuItem>
